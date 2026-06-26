@@ -1,0 +1,323 @@
+<svg viewBox="0 0 1950 490" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif" font-size="8.5">
+  <rect width="1950" height="490" fill="#0a0a0a"/>
+  <defs>
+    <marker id="a" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+      <path d="M0,0 L0,5 L5,2.5 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- ═══ COL 0: INICIO ═══ -->
+  <text x="10" y="18" font-weight="700" font-size="10" fill="#fff">INICIO</text>
+  <text x="10" y="40" fill="#aaa">Proceso de crédito</text>
+  <text x="10" y="108" fill="#aaa">Capacidad de pago</text>
+  <text x="10" y="180" fill="#aaa">Comparación de créditos</text>
+  <text x="10" y="340" fill="#aaa">Menú</text>
+
+  <!-- Col0 bracket -->
+  <line x1="183" y1="40" x2="183" y2="340" stroke="#444" stroke-width="0.8"/>
+  <line x1="183" y1="40"  x2="187" y2="40"  stroke="#444" stroke-width="0.8"/>
+  <line x1="183" y1="108" x2="187" y2="108" stroke="#444" stroke-width="0.8"/>
+  <line x1="183" y1="180" x2="187" y2="180" stroke="#444" stroke-width="0.8"/>
+  <line x1="183" y1="340" x2="187" y2="340" stroke="#444" stroke-width="0.8"/>
+
+  <!-- Col0 → Col1 arrows -->
+  <path d="M183 108 H193 V91 H200" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M183 180 H193 V158 H200" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <!-- Menú → bracket → CENTRO/AYUDA/PERFIL -->
+  <line x1="183" y1="340" x2="193" y2="340" stroke="#444" stroke-width="0.8"/>
+  <line x1="193" y1="293" x2="193" y2="397" stroke="#444" stroke-width="0.8"/>
+  <line x1="193" y1="293" x2="200" y2="293" stroke="#666" stroke-width="0.8" marker-end="url(#a)"/>
+  <line x1="193" y1="333" x2="200" y2="333" stroke="#666" stroke-width="0.8" marker-end="url(#a)"/>
+  <line x1="193" y1="397" x2="200" y2="397" stroke="#666" stroke-width="0.8" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 1 ═══ -->
+  <!-- CAPACIDAD DE PAGO -->
+  <text x="200" y="91"  font-weight="700" fill="#fff">CAPACIDAD DE PAGO</text>
+  <line x1="197" y1="97" x2="197" y2="133" stroke="#444" stroke-width="0.8"/>
+  <line x1="197" y1="100" x2="201" y2="100" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="100" fill="#aaa">Forma del crédito</text>
+  <line x1="197" y1="111" x2="201" y2="111" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="111" fill="#aaa">Moneda</text>
+  <line x1="197" y1="122" x2="201" y2="122" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="122" fill="#aaa">Información financiera</text>
+  <line x1="197" y1="133" x2="201" y2="133" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="133" fill="#aaa">Resultado</text>
+
+  <!-- COMPARACIÓN DE CRÉDITOS -->
+  <text x="200" y="158" font-weight="700" fill="#fff">COMPARACIÓN DE CRÉDITOS</text>
+  <line x1="197" y1="164" x2="197" y2="222" stroke="#444" stroke-width="0.8"/>
+  <line x1="197" y1="167" x2="201" y2="167" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="167" fill="#aaa">Explicación</text>
+  <line x1="197" y1="178" x2="201" y2="178" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="178" fill="#aaa">Preferencias</text>
+  <line x1="197" y1="189" x2="201" y2="189" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="189" fill="#aaa">Datos del crédito</text>
+  <line x1="197" y1="200" x2="201" y2="200" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="200" fill="#aaa">Comparador de créditos</text>
+  <line x1="197" y1="211" x2="201" y2="211" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="211" fill="#aaa">Resultado</text>
+
+  <!-- CENTRO DE CONOCIMIENTO -->
+  <text x="200" y="293" font-weight="700" fill="#fff">CENTRO DE CONOCIMIENTO</text>
+  <line x1="197" y1="299" x2="197" y2="313" stroke="#444" stroke-width="0.8"/>
+  <line x1="197" y1="302" x2="201" y2="302" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="302" fill="#aaa">Buscador</text>
+  <line x1="197" y1="313" x2="201" y2="313" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="313" fill="#aaa">Blog</text>
+
+  <!-- AYUDA -->
+  <text x="200" y="333" font-weight="700" fill="#fff">AYUDA</text>
+  <line x1="197" y1="339" x2="197" y2="364" stroke="#444" stroke-width="0.8"/>
+  <line x1="197" y1="342" x2="201" y2="342" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="342" fill="#aaa">Preguntas frecuentes</text>
+  <line x1="197" y1="353" x2="201" y2="353" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="353" fill="#aaa">Chat</text>
+  <line x1="197" y1="364" x2="201" y2="364" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="364" fill="#aaa">Contacto</text>
+
+  <!-- PERFIL -->
+  <text x="200" y="397" font-weight="700" fill="#fff">PERFIL</text>
+  <line x1="197" y1="403" x2="197" y2="460" stroke="#444" stroke-width="0.8"/>
+  <line x1="197" y1="406" x2="201" y2="406" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="406" fill="#aaa">Datos personales</text>
+  <line x1="197" y1="417" x2="201" y2="417" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="417" fill="#aaa">Editar perfil</text>
+  <line x1="197" y1="428" x2="201" y2="428" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="428" fill="#aaa">Documentos</text>
+  <line x1="197" y1="439" x2="201" y2="439" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="439" fill="#aaa">Preaprobaciones realizadas</text>
+  <line x1="197" y1="450" x2="201" y2="450" stroke="#444" stroke-width="0.8"/>
+  <text x="203" y="450" fill="#aaa">Última capacidad de pago</text>
+
+  <!-- Col1 → Col2 arrows -->
+  <path d="M430 122 H438 V45 H445" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M430 133 H438 V103 H445" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M430 189 H438 V228 H445" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M430 200 H438 V330 H445" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M430 211 H438 V403 H445" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 2 ═══ -->
+  <!-- INFORMACIÓN FINANCIERA -->
+  <text x="445" y="45"  font-weight="700" fill="#fff">INFORMACIÓN FINANCIERA</text>
+  <line x1="442" y1="51" x2="442" y2="76" stroke="#444" stroke-width="0.8"/>
+  <line x1="442" y1="54" x2="446" y2="54" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="54"  fill="#aaa">Ingresos</text>
+  <line x1="442" y1="65" x2="446" y2="65" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="65"  fill="#aaa">Gastos</text>
+  <line x1="442" y1="76" x2="446" y2="76" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="76"  fill="#aaa">Referencia del crédito</text>
+
+  <!-- RESULTADO (Cap pago) -->
+  <text x="445" y="103" font-weight="700" fill="#fff">RESULTADO</text>
+  <line x1="442" y1="109" x2="442" y2="194" stroke="#444" stroke-width="0.8"/>
+  <line x1="442" y1="112" x2="446" y2="112" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="112" fill="#aaa">Ingresos</text>
+  <line x1="442" y1="123" x2="446" y2="123" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="123" fill="#aaa">Gastos</text>
+  <line x1="442" y1="134" x2="446" y2="134" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="134" fill="#aaa">Monto total</text>
+  <line x1="442" y1="145" x2="446" y2="145" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="145" fill="#aaa">Monto por mes</text>
+  <line x1="442" y1="156" x2="446" y2="156" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="156" fill="#aaa">Comparar créditos</text>
+  <line x1="442" y1="167" x2="446" y2="167" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="167" fill="#aaa">Gráfico</text>
+  <line x1="442" y1="178" x2="446" y2="178" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="178" fill="#aaa">Guardar resultados</text>
+
+  <!-- DATOS DEL CRÉDITO -->
+  <text x="445" y="228" font-weight="700" fill="#fff">DATOS DEL CRÉDITO</text>
+  <line x1="442" y1="234" x2="442" y2="303" stroke="#444" stroke-width="0.8"/>
+  <line x1="442" y1="237" x2="446" y2="237" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="237" fill="#aaa">Moneda</text>
+  <line x1="442" y1="248" x2="446" y2="248" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="248" fill="#aaa">Monto de crédito</text>
+  <line x1="442" y1="259" x2="446" y2="259" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="259" fill="#aaa">Monto de la vivienda</text>
+  <line x1="442" y1="270" x2="446" y2="270" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="270" fill="#aaa">Prima</text>
+  <line x1="442" y1="281" x2="446" y2="281" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="281" fill="#aaa">Plazo</text>
+  <line x1="442" y1="292" x2="446" y2="292" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="292" fill="#aaa">Tipo de trabajador</text>
+
+  <!-- COMPARADOR CRÉDITOS -->
+  <text x="445" y="330" font-weight="700" fill="#fff">COMPARADOR CRÉDITOS</text>
+  <line x1="442" y1="336" x2="442" y2="383" stroke="#444" stroke-width="0.8"/>
+  <line x1="442" y1="339" x2="446" y2="339" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="339" fill="#aaa">Datos para el crédito</text>
+  <line x1="442" y1="350" x2="446" y2="350" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="350" fill="#aaa">Preferencias</text>
+  <line x1="442" y1="361" x2="446" y2="361" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="361" fill="#aaa">Cards de cada crédito</text>
+  <line x1="442" y1="372" x2="446" y2="372" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="372" fill="#aaa">Seleccionar créditos</text>
+
+  <!-- RESULTADO (Comparación) -->
+  <text x="445" y="403" font-weight="700" fill="#fff">RESULTADO</text>
+  <line x1="442" y1="409" x2="442" y2="455" stroke="#444" stroke-width="0.8"/>
+  <line x1="442" y1="412" x2="446" y2="412" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="412" fill="#aaa">Créditos seleccionados</text>
+  <line x1="442" y1="423" x2="446" y2="423" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="423" fill="#aaa">Condiciones</text>
+  <line x1="442" y1="434" x2="446" y2="434" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="434" fill="#aaa">Beneficios</text>
+  <line x1="442" y1="445" x2="446" y2="445" stroke="#444" stroke-width="0.8"/>
+  <text x="448" y="445" fill="#aaa">Empezar Preaprobación</text>
+
+  <!-- Col2 → Col3 arrows -->
+  <path d="M678 54 H693 V22 H698" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M678 65 H693 V72 H698" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M678 76 H693 V148 H698" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M678 361 H693 V335 H698" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 3 ═══ -->
+  <!-- INGRESOS -->
+  <text x="698" y="22"  font-weight="700" fill="#fff">INGRESOS</text>
+  <line x1="695" y1="28" x2="695" y2="50" stroke="#444" stroke-width="0.8"/>
+  <line x1="695" y1="31" x2="699" y2="31" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="31"  fill="#aaa">Ingresos netos deudor</text>
+  <line x1="695" y1="42" x2="699" y2="42" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="42"  fill="#aaa">Ingresos netos codeudor</text>
+
+  <!-- GASTOS -->
+  <text x="698" y="72"  font-weight="700" fill="#fff">GASTOS</text>
+  <line x1="695" y1="78" x2="695" y2="120" stroke="#444" stroke-width="0.8"/>
+  <line x1="695" y1="81" x2="699" y2="81" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="81"  fill="#aaa">Gastos básicos</text>
+  <line x1="695" y1="92" x2="699" y2="92" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="92"  fill="#aaa">Préstamos</text>
+  <line x1="695" y1="103" x2="699" y2="103" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="103" fill="#aaa">Gastos anuales</text>
+  <line x1="695" y1="114" x2="699" y2="114" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="114" fill="#aaa">Otros gastos</text>
+
+  <!-- REFERECIAL DEL CRÉDITO -->
+  <text x="698" y="148" font-weight="700" fill="#fff">REFERECIAL DEL CRÉDITO</text>
+  <line x1="695" y1="154" x2="695" y2="186" stroke="#444" stroke-width="0.8"/>
+  <line x1="695" y1="157" x2="699" y2="157" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="157" fill="#aaa">Explicación</text>
+  <line x1="695" y1="168" x2="699" y2="168" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="168" fill="#aaa">Tasa referencial</text>
+  <line x1="695" y1="179" x2="699" y2="179" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="179" fill="#aaa">Plazo</text>
+
+  <!-- CARDS -->
+  <text x="698" y="335" font-weight="700" fill="#fff">CARDS</text>
+  <line x1="695" y1="341" x2="695" y2="399" stroke="#444" stroke-width="0.8"/>
+  <line x1="695" y1="344" x2="699" y2="344" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="344" fill="#aaa">Tasa</text>
+  <line x1="695" y1="355" x2="699" y2="355" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="355" fill="#aaa">Tipo de tasa</text>
+  <line x1="695" y1="366" x2="699" y2="366" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="366" fill="#aaa">Mensualidad</text>
+  <line x1="695" y1="377" x2="699" y2="377" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="377" fill="#aaa">Contactar banco</text>
+  <line x1="695" y1="388" x2="699" y2="388" stroke="#444" stroke-width="0.8"/>
+  <text x="701" y="388" fill="#aaa">Más información</text>
+
+  <!-- Col3 → Col4 arrows -->
+  <path d="M938 81 H953 V40 H958" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M938 92 H953 V128 H958" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M938 388 H953 V330 H958" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 4 ═══ -->
+  <!-- GASTOS BÁSICOS -->
+  <text x="958" y="40"  font-weight="700" fill="#fff">GASTOS BÁSICOS</text>
+  <line x1="955" y1="46" x2="955" y2="108" stroke="#444" stroke-width="0.8"/>
+  <line x1="955" y1="49" x2="959" y2="49" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="49"  fill="#aaa">Servicios públicos</text>
+  <line x1="955" y1="60" x2="959" y2="60" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="60"  fill="#aaa">Alimentación</text>
+  <line x1="955" y1="71" x2="959" y2="71" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="71"  fill="#aaa">Transporte</text>
+  <line x1="955" y1="82" x2="959" y2="82" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="82"  fill="#aaa">Alquiler</text>
+  <line x1="955" y1="93" x2="959" y2="93" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="93"  fill="#aaa">Impuestos y seguros</text>
+
+  <!-- PRÉSTAMOS -->
+  <text x="958" y="128" font-weight="700" fill="#fff">PRÉSTAMOS</text>
+  <line x1="955" y1="134" x2="955" y2="152" stroke="#444" stroke-width="0.8"/>
+  <line x1="955" y1="137" x2="959" y2="137" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="137" fill="#aaa">Tarjetas de crédito</text>
+  <line x1="955" y1="148" x2="959" y2="148" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="148" fill="#aaa">Préstamos</text>
+
+  <!-- MÁS INFORMACIÓN -->
+  <text x="958" y="330" font-weight="700" fill="#fff">MÁS INFORMACIÓN</text>
+  <line x1="955" y1="336" x2="955" y2="369" stroke="#444" stroke-width="0.8"/>
+  <line x1="955" y1="339" x2="959" y2="339" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="339" fill="#aaa">Desglose de tasa por período</text>
+  <line x1="955" y1="350" x2="959" y2="350" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="350" fill="#aaa">Gastos Iniciales</text>
+  <line x1="955" y1="361" x2="959" y2="361" stroke="#444" stroke-width="0.8"/>
+  <text x="961" y="361" fill="#aaa">Monto total</text>
+
+  <!-- Col4 → Col5 arrow -->
+  <path d="M1193 349 H1208 V308 H1213" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 5 ═══ -->
+  <!-- PREAPROBACIÓN -->
+  <text x="1213" y="308" font-weight="700" fill="#fff">PREAPROBACIÓN</text>
+  <line x1="1210" y1="314" x2="1210" y2="372" stroke="#444" stroke-width="0.8"/>
+  <line x1="1210" y1="317" x2="1214" y2="317" stroke="#444" stroke-width="0.8"/>
+  <text x="1216" y="317" fill="#aaa">Explicación</text>
+  <line x1="1210" y1="328" x2="1214" y2="328" stroke="#444" stroke-width="0.8"/>
+  <text x="1216" y="328" fill="#aaa">Datos personales</text>
+  <line x1="1210" y1="339" x2="1214" y2="339" stroke="#444" stroke-width="0.8"/>
+  <text x="1216" y="339" fill="#aaa">Datos financieros</text>
+  <line x1="1210" y1="350" x2="1214" y2="350" stroke="#444" stroke-width="0.8"/>
+  <text x="1216" y="350" fill="#aaa">Documentos</text>
+  <line x1="1210" y1="361" x2="1214" y2="361" stroke="#444" stroke-width="0.8"/>
+  <text x="1216" y="361" fill="#aaa">Resultado</text>
+
+  <!-- Col5 → Col6 arrows -->
+  <path d="M1448 328 H1463 V228 H1468" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M1448 339 H1463 V303 H1468" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M1448 350 H1463 V378 H1468" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+  <path d="M1448 361 H1463 V428 H1468" stroke="#666" stroke-width="0.8" fill="none" marker-end="url(#a)"/>
+
+  <!-- ═══ COL 6 ═══ -->
+  <!-- DATOS PERSONALES -->
+  <text x="1468" y="228" font-weight="700" fill="#fff">DATOS PERSONALES</text>
+  <line x1="1465" y1="234" x2="1465" y2="280" stroke="#444" stroke-width="0.8"/>
+  <line x1="1465" y1="237" x2="1469" y2="237" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="237" fill="#aaa">Núm. identificación deudor/codeudor</text>
+  <line x1="1465" y1="248" x2="1469" y2="248" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="248" fill="#aaa">Nombre completo deudor/codeudor</text>
+  <line x1="1465" y1="259" x2="1469" y2="259" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="259" fill="#aaa">Teléfono deudor/codeudor</text>
+  <line x1="1465" y1="270" x2="1469" y2="270" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="270" fill="#aaa">Correo deudor/codeudor</text>
+
+  <!-- DATOS FINANCIEROS -->
+  <text x="1468" y="303" font-weight="700" fill="#fff">DATOS FINANCIEROS</text>
+  <line x1="1465" y1="309" x2="1465" y2="357" stroke="#444" stroke-width="0.8"/>
+  <line x1="1465" y1="312" x2="1469" y2="312" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="312" fill="#aaa">Ingreso neto deudor/codeudor</text>
+  <line x1="1465" y1="323" x2="1469" y2="323" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="323" fill="#aaa">Ingreso bruto deudor/codeudor</text>
+  <line x1="1465" y1="334" x2="1469" y2="334" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="334" fill="#aaa">Tipo de trabajador deudor/codeudor</text>
+  <line x1="1465" y1="345" x2="1469" y2="345" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="345" fill="#aaa">Tiempo trabajando deudor/codeudor</text>
+
+  <!-- DOCUMENTOS -->
+  <text x="1468" y="378" font-weight="700" fill="#fff">DOCUMENTOS</text>
+  <line x1="1465" y1="384" x2="1465" y2="406" stroke="#444" stroke-width="0.8"/>
+  <line x1="1465" y1="387" x2="1469" y2="387" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="387" fill="#aaa">Foto de cédula deudor/codeudor</text>
+  <line x1="1465" y1="398" x2="1469" y2="398" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="398" fill="#aaa">Autorización crediticia deudor/codeudor</text>
+
+  <!-- RESULTADO -->
+  <text x="1468" y="428" font-weight="700" fill="#fff">RESULTADO</text>
+  <line x1="1465" y1="434" x2="1465" y2="466" stroke="#444" stroke-width="0.8"/>
+  <line x1="1465" y1="437" x2="1469" y2="437" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="437" fill="#aaa">Enviar</text>
+  <line x1="1465" y1="448" x2="1469" y2="448" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="448" fill="#aaa">Felicitación</text>
+  <line x1="1465" y1="459" x2="1469" y2="459" stroke="#444" stroke-width="0.8"/>
+  <text x="1471" y="459" fill="#aaa">Ver preaprobaciones</text>
+</svg>

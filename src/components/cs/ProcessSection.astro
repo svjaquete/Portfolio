@@ -1,0 +1,126 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  image?: string;
+}
+const { label = 'How we face the problem?', title } = Astro.props;
+---
+<div class="process">
+  <div class="process-inner">
+    <p class="process-label">{label}</p>
+    <h2>{title}</h2>
+
+    <div class="dd-wrap">
+      <svg class="dd-svg" viewBox="0 0 900 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Diamond 1: equal sides, r=150 — left(150,155) top(300,5) right(450,155) bottom(300,305) -->
+        <path
+          d="M 150,155 L 300,5 L 450,155 L 300,305 Z"
+          stroke="rgba(124,106,247,0.35)"
+          stroke-width="1.5"
+          fill="rgba(124,106,247,0.05)"
+        />
+
+        <!-- Diamond 2: equal sides, r=150 — left(450,155) top(600,5) right(750,155) bottom(600,305) -->
+        <path
+          d="M 450,155 L 600,5 L 750,155 L 600,305 Z"
+          stroke="rgba(124,106,247,0.35)"
+          stroke-width="1.5"
+          fill="rgba(124,106,247,0.05)"
+        />
+
+        <!-- Hidden travel path -->
+        <path
+          id="dd-travel"
+          d="M 150,155 L 300,5 L 450,155 L 600,5 L 750,155 L 600,305 L 450,155 L 300,305 L 150,155"
+          stroke="none"
+          fill="none"
+        />
+
+        <!-- Labels centered in each quadrant -->
+        <text x="225" y="155" class="phase-label">Discover</text>
+        <text x="375" y="155" class="phase-label">Define</text>
+        <text x="525" y="155" class="phase-label">Develop</text>
+        <text x="675" y="155" class="phase-label">Deliver</text>
+
+        <!-- Ball outer glow -->
+        <circle r="24" fill="rgba(124,106,247,0.15)">
+          <animateMotion dur="14s" repeatCount="indefinite">
+            <mpath href="#dd-travel"/>
+          </animateMotion>
+        </circle>
+
+        <!-- Ball mid glow -->
+        <circle r="14" fill="rgba(124,106,247,0.3)">
+          <animateMotion dur="14s" repeatCount="indefinite">
+            <mpath href="#dd-travel"/>
+          </animateMotion>
+        </circle>
+
+        <!-- Ball core -->
+        <circle r="7" fill="#b8afff" filter="url(#glow)">
+          <animateMotion dur="14s" repeatCount="indefinite">
+            <mpath href="#dd-travel"/>
+          </animateMotion>
+        </circle>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .process {
+    background: #0d0b1e;
+    padding: 5rem 2.5rem;
+    text-align: center;
+  }
+  .process-inner { max-width: 900px; margin: 0 auto; }
+  .process-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 3rem;
+  }
+
+  .dd-wrap { width: 100%; max-width: 860px; margin: 0 auto; }
+  .dd-svg { width: 100%; height: auto; overflow: visible; }
+
+  .dd-path { }
+
+  .dd-ball {
+    filter: url(#glow);
+  }
+
+  .dd-glow {
+    filter: blur(8px);
+  }
+
+  .phase-label {
+    fill: rgba(240,237,232,0.55);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 680px) { .process { padding: 3.5rem 1.5rem; } }
+</style>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const skills = [
+  { category: 'Design', items: ['Product Design', 'Service Design', 'UX Research', 'Interaction Design', 'Design Systems', 'Prototyping', 'Workshop Facilitation'] },
+  { category: 'Tools', items: ['Figma', 'Framer', 'Miro', 'Illustrator', 'Photoshop', 'Claude'] },
+  { category: 'Methods', items: ['Double Diamond', 'Service Blueprinting', 'Stakeholder Interviews', 'Usability Testing', 'Card Sorting', 'Empathy Mapping'] },
+];
+---
+<BaseLayout title="About — Sofía Jaquete" description="About Sofía Jaquete, product and service designer.">
+  <div class="page">
+    <div class="about-grid">
+      <div class="photo-col">
+        <div class="photo-placeholder">
+          <span>Photo</span>
+        </div>
+      </div>
+
+      <div class="bio-col">
+        <p class="eyebrow">About me</p>
+        <h1>Hey, I'm Sofía.</h1>
+        <div class="bio">
+          <p>
+            I'm a Product & Service Designer who believes the best experiences are built with people, not just for them. My work is grounded in research, collaboration, and empathy — from early discovery all the way through to delivery.
+          </p>
+          <p>
+            I've spent the last several years designing across fintech, healthcare, and compliance — building SaaS platforms, design systems, and service processes that work for everyone involved: users, operators, and the teams shipping the product.
+          </p>
+          <p>
+            I'm comfortable owning the full design process end-to-end, facilitating workshops with cross-functional stakeholders, and translating messy, ambiguous problems into clear, testable solutions.
+          </p>
+        </div>
+
+        <div class="skills-section">
+          <h2>Skills & tools</h2>
+          <div class="skills-grid">
+            {skills.map(group => (
+              <div class="skill-group">
+                <h3>{group.category}</h3>
+                <ul>
+                  {group.items.map(s => <li>{s}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="/resume" class="btn-primary">View resume</a>
+          <a href="https://linkedin.com/in/sofiavjaquete" target="_blank" rel="noopener" class="btn-secondary">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    position: sticky;
+    top: 90px;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.75rem;
+  }
+
+  .bio p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.1rem; font-size: 0.97rem; }
+
+  .skills-section { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+
+  h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 2rem; }
+
+  h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  li { font-size: 0.9rem; color: var(--text); }
+
+  .cta-row { display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+  .btn-secondary {
+    padding: 0.75rem 1.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); transform: translateY(-1px); }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .photo-placeholder { max-width: 240px; position: static; }
+    .page { padding: 3rem 1.25rem; }
+  }
+</style>

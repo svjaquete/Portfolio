@@ -1,0 +1,172 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  phoneImage: string;
+  phoneWidth?: string;
+  desktopImage?: string;
+  desktopImageBack?: string;
+  inlineDesktop?: boolean;
+}
+const { title, subtitle = 'Final result', description, phoneImage, phoneWidth = '700px', desktopImage, desktopImageBack, inlineDesktop = false } = Astro.props;
+---
+<div class="final">
+  <div class="final-header">
+    <h2>{title}</h2>
+    <p class="final-subtitle">{subtitle}</p>
+    <img class="final-phone" src={phoneImage} alt={title} loading="lazy" style={`max-width: ${phoneWidth}`} />
+  </div>
+
+  <div class="final-body">
+    {inlineDesktop ? (
+      <div class="final-inline-row">
+        <div>
+          <p class="final-desc" style="margin:0 0 1rem; text-align:left;">{description}</p>
+          <ul class="final-bullets" style="text-align:left;"><slot /></ul>
+        </div>
+        {desktopImage && <img src={desktopImage} alt={`${title} desktop`} loading="lazy" class="final-inline-img" />}
+      </div>
+    ) : (
+      <>
+        <p class="final-desc">{description}</p>
+        <div class="final-columns">
+          <div>
+            <p class="final-steps-label">Three steps</p>
+            <ul class="final-bullets"><slot /></ul>
+          </div>
+        </div>
+      </>
+    )}
+    {!inlineDesktop && (desktopImage || desktopImageBack) && (
+      <div class="final-images-row">
+        {desktopImageBack && <img src={desktopImageBack} alt="" loading="lazy" />}
+        {desktopImage && <img src={desktopImage} alt={`${title} desktop`} loading="lazy" />}
+      </div>
+    )}
+  </div>
+</div>
+<style>
+  .final-header {
+    text-align: center;
+    padding: 5rem 2.5rem 3rem;
+    background: var(--bg);
+  }
+  h2 {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .final-subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 3rem;
+  }
+  .final-phone {
+    max-width: 700px;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 0;
+    filter: drop-shadow(0 0 0 rgba(200,200,200,0));
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+    cursor: pointer;
+  }
+  .final-phone:hover {
+    transform: scale(1.06);
+    filter: drop-shadow(0 25px 50px rgba(180,180,180,0.35));
+  }
+
+  .final-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem 5rem;
+  }
+  .final-desc {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+  .final-columns {
+    display: flex;
+    justify-content: center;
+  }
+  .final-steps-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .final-bullets,
+  .final-bullets :global(ul) {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+  .final-bullets :global(li) {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+    text-align: center;
+  }
+  .final-bullets :global(li)::before {
+    content: none;
+  }
+  .final-inline-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    text-align: left;
+  }
+  .final-inline-row :global(li) {
+    text-align: left;
+    padding-left: 0;
+  }
+  .final-inline-img {
+    width: 100%;
+    border-radius: 0;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 20px 40px rgba(180,180,180,0.25));
+  }
+  .final-images-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  .final-images-row img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 30px 60px rgba(120,120,120,0.2), 0 8px 20px rgba(100,100,100,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .final-images-row img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 40px 80px rgba(120,120,120,0.3), 0 12px 30px rgba(100,100,100,0.2);
+  }
+
+  @media (max-width: 680px) {
+    .final-columns { grid-template-columns: 1fr; gap: 2rem; }
+    .final-body { padding: 2.5rem 1.5rem 3rem; }
+  }
+</style>

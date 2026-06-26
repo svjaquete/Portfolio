@@ -1,0 +1,93 @@
+---
+title: "Water Meter Platform"
+summary: "A water consumption monitoring platform for large industrial users — customizable dashboards, advanced analytics, and integrated leak detection alerts for precise usage tracking."
+role: "UX Designer & Researcher"
+tools: ["Figma", "Miro", "User Research", "Prototyping"]
+coverImage: "/images/Frame+12.png"
+cardImages:
+  - "/images/Frame+12.png"
+link: "https://www.sofiavjaquete.com/work/alina"
+order: 4
+---
+
+import Feature from '../../components/cs/Feature.astro';
+import Problem from '../../components/cs/Problem.astro';
+import SectionTitle from '../../components/cs/SectionTitle.astro';
+import SubHeading from '../../components/cs/SubHeading.astro';
+import DescRow from '../../components/cs/DescRow.astro';
+import ImageGrid from '../../components/cs/ImageGrid.astro';
+import FinalResult from '../../components/cs/FinalResult.astro';
+
+<div style="padding:4rem 0 2rem;text-align:center;">
+  <h2 style="font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:600;color:var(--text);max-width:700px;margin:0 auto 1.5rem;line-height:1.5;">Simple and easy to use platform, to track your water usage for your company and get monthly reports.</h2>
+  <p style="font-size:0.97rem;color:var(--text-muted);max-width:600px;margin:0 auto 3rem;line-height:1.75;">ALINA gives industrial water users real-time visibility into their consumption, with automated alerts for leaks and anomalies, and monthly reports generated automatically.</p>
+  <div style="display:flex;gap:1.5rem;width:100%;">
+    <img src="/images/Frame+4.png" alt="Platform screen 1" style="flex:1;width:0;border-radius:10px;object-fit:cover;" />
+    <img src="/images/Frame+1.png" alt="Platform screen 2" style="flex:1;width:0;border-radius:10px;object-fit:cover;" />
+  </div>
+</div>
+
+<Problem
+  label="The problem?"
+  heading="Large industrial users had no precise way to monitor or control their water consumption."
+>
+  Construction companies and manufacturers consume significant amounts of water but relied on manual readings and end-of-month invoices to understand usage — making leak detection, optimization, and accurate reporting nearly impossible.
+</Problem>
+
+<SectionTitle title="Alignment" />
+
+<DescRow label="Stakeholder workshops">
+  Workshops to define project objectives and scope, establishing shared understanding across the client and design team before research began.
+</DescRow>
+
+<SectionTitle title="Research" />
+
+<DescRow label="Interviews">
+  Sessions with water monitoring professionals across two industries: **construction** and **skincare manufacturing** — two very different consumption patterns and reporting needs.
+</DescRow>
+
+<DescRow label="Market Research">
+  Competitive analysis of existing industrial water monitoring solutions to identify gaps and benchmark best practices.
+</DescRow>
+
+<div style="width:100%;overflow:hidden;border-radius:10px;margin:1.5rem 0;">
+  <img src="/images/marketresearchalina.jpg" alt="Market Research" style="width:100%;display:block;margin:-20px 0;clip-path:inset(20px 0);filter:invert(1) hue-rotate(180deg) contrast(1.1);mix-blend-mode:screen;" />
+</div>
+
+<SectionTitle title="User Analysis" />
+
+<DescRow label="User Personas">
+  Developed profiles representing the key user types and their water monitoring goals across both industry contexts.
+</DescRow>
+
+<DescRow label="Empathy Map">
+  Visualized the emotional and practical context around water usage monitoring for both industrial and administrative users.
+</DescRow>
+
+<DescRow label="Needs synthesis">
+  Prioritized platform features based on user needs and business impact — identifying leak detection and reporting as the two highest-priority capabilities.
+</DescRow>
+
+<ImageGrid
+  cols={1}
+  images={["/images/image+23.png"]}
+/>
+
+
+<DescRow label="Low-fidelity wireframes & Prototype">
+  Quick iterations to validate the core dashboard and alert concepts with stakeholders before investing in high-fidelity design.
+</DescRow>
+
+<SectionTitle title="Development" />
+
+<FinalResult
+  title="ALINA"
+  subtitle="Final result"
+  description="A validated platform enabling industrial users to monitor water consumption with precision — with customizable dashboards, advanced analytics, and automated leak detection."
+  phoneImage="/images/Frame+12.png"
+>
+  - Customizable dashboards for real-time water consumption monitoring.
+  - Advanced analytics with trend detection and benchmarking.
+  - Integrated leak detection alerts for anomalies.
+  - Automated monthly usage reports.
+</FinalResult>

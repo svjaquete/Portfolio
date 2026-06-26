@@ -1,0 +1,528 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Sofía Jaquete — Product & Service Designer">
+
+  <section class="hero">
+    <canvas id="anemone" aria-hidden="true"></canvas>
+    <div class="hero-label reveal">Product & Service Designer</div>
+    <h1 class="hero-heading">
+      <span class="serif-italic">Hey,</span> I'm <span class="sofia">Sofia</span>
+    </h1>
+    <p class="hero-sub reveal">
+      I design with people, not just for them,<br />
+      experiences grounded in research, collaboration, and empathy.
+    </p>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="hero-scroll-line" />
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="work-header reveal">
+      <h2>Selected work</h2>
+      <a href="/projects" class="see-all">All projects →</a>
+    </div>
+    <div class="work-grid">
+      {projects.map((p, i) => (
+        <ProjectCard
+          title={p.data.title}
+          summary={p.data.summary}
+          role={p.data.role}
+          tools={p.data.tools}
+          slug={p.id}
+          coverImage={p.data.coverImage}
+          cardImages={p.data.cardImages}
+          index={i}
+          featured={p.id === 'health-loan' || p.id === 'azulo-admi'}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="marquee-section">
+    <div class="marquee">
+      <div class="marquee-track">
+        {Array(3).fill(['Product Design', 'Service Design', 'UX Research', 'Prototyping', 'Design Systems', 'Workshops', 'Strategy']).flat().map(s => (
+          <span>{s}<em>·</em></span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+
+<style>
+  #anemone {
+    position: relative;
+    margin: -40px auto 1rem;
+    width: 340px;
+    height: 340px;
+    pointer-events: none;
+    opacity: 0.92;
+  }
+  @media (max-width: 680px) {
+    #anemone { width: 240px; height: 240px; }
+  }
+
+  /* Hero */
+  .hero {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2.5rem 4rem;
+    margin-top: -50px;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+  }
+
+  .hero-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-heading {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7.5vw, 6.5rem);
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    line-height: 1.02;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    cursor: default;
+  }
+  .hero-heading .char {
+    display: inline-block;
+    white-space: pre;
+    transition: -webkit-text-fill-color 0.2s;
+  }
+  .serif-italic { font-style: normal; letter-spacing: 0.03em; }
+  .sofia { letter-spacing: 0.04em; }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0.75;
+  }
+  .hero-scroll span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #aaa;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #46d4c8, #9b6af7, transparent);
+    animation: scrollline 2s ease-in-out infinite;
+  }
+  @keyframes scrollline {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* Work section */
+  .work {
+    padding: 5rem 2.5rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .work-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+  .work-header h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+  .see-all { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+  .see-all:hover { color: var(--text); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background: transparent;
+    border: none;
+  }
+  .work-grid > :global(.card) {
+    border: none;
+    border-radius: 0;
+    background: var(--bg);
+  }
+  .work-grid > :global(.card:hover) { background: var(--bg-card); }
+
+  /* Marquee */
+  .marquee-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    padding: 1.2rem 0;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    padding: 0 1.5rem;
+  }
+  .marquee-track em { font-style: normal; color: var(--accent); margin-left: 1.5rem; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.333%); }
+  }
+
+  @media (max-width: 680px) {
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .work { padding: 3rem 1.5rem 4rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .hero-scroll { display: none; }
+  }
+</style>
+
+<script>
+const canvas = document.getElementById('anemone') as HTMLCanvasElement;
+const ctx = canvas.getContext('2d')!;
+const DPR = Math.min(devicePixelRatio, 2);
+const W = canvas.offsetWidth * DPR;
+const H = canvas.offsetHeight * DPR;
+canvas.width = W; canvas.height = H;
+
+// Base colors — teal range from neon to dark, hover pink/purple
+const PALETTE_NORMAL = [
+  { r: 20,  g: 230, b: 210 },  // neon bright teal
+  { r: 30,  g: 190, b: 175 },  // mid teal
+  { r: 15,  g: 160, b: 148 },  // dark teal
+  { r: 50,  g: 215, b: 195 },  // neon-ish
+  { r: 10,  g: 130, b: 120 },  // very dark teal
+  { r: 60,  g: 220, b: 200 },  // bright
+];
+const PALETTE_HOVER = [
+  { r: 200, g: 80,  b: 240 },
+  { r: 220, g: 90,  b: 210 },
+  { r: 150, g: 60,  b: 220 },
+  { r: 230, g: 70,  b: 200 },
+  { r: 170, g: 50,  b: 230 },
+  { r: 210, g: 100, b: 250 },
+];
+
+// Per-tentacle hover: track mouse in canvas space
+let mouseX = -9999, mouseY = -9999;
+canvas.style.pointerEvents = 'all';
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouseX = (e.clientX - rect.left) * DPR;
+  mouseY = (e.clientY - rect.top) * DPR;
+});
+canvas.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
+
+function lerp(a: number, b: number, t: number) { return a + (b-a)*t; }
+
+function getColor(palIdx: number, bright: number, alpha: number, ht = 0) {
+  const n = PALETTE_NORMAL[palIdx % PALETTE_NORMAL.length];
+  const h = PALETTE_HOVER[palIdx % PALETTE_HOVER.length];
+  const r = lerp(n.r, h.r, ht) * bright;
+  const g = lerp(n.g, h.g, ht) * bright;
+  const b = lerp(n.b, h.b, ht) * bright;
+  return `rgba(${Math.min(255,r)|0},${Math.min(255,g)|0},${Math.min(255,b)|0},${alpha.toFixed(2)})`;
+}
+
+// Each stream = one tentacle-like particle trail
+const NUM_STREAMS = 52;
+const cx = W * 0.5, cy = H * 0.62;
+
+interface Stream {
+  theta: number;
+  phi: number;
+  len: number;
+  wid: number;
+  speed: number;
+  phase: number;
+  freq: number;
+  curl: number;
+  colIdx: number;
+  hoverT: number;
+}
+
+const streams: Stream[] = [];
+const rings = [
+  { n: 5,  phiRange:[0.05,0.18], lenMul:0.50, widMul:1.10 },
+  { n: 9,  phiRange:[0.18,0.35], lenMul:0.75, widMul:1.05 },
+  { n: 13, phiRange:[0.35,0.52], lenMul:0.95, widMul:0.98 },
+  { n: 14, phiRange:[0.52,0.68], lenMul:1.08, widMul:0.90 },
+  { n: 11, phiRange:[0.68,0.85], lenMul:1.05, widMul:0.80 },
+  { n: 8,  phiRange:[1.00,1.12], lenMul:1.00, widMul:0.88 },
+  { n: 6,  phiRange:[1.12,1.25], lenMul:0.85, widMul:0.75 },
+  { n: 4,  phiRange:[1.25,1.38], lenMul:0.65, widMul:0.60 },
+];
+
+const BASE_LEN = W * 0.28;
+const BASE_WID = W * 0.022;
+
+rings.forEach((ring, ri) => {
+  for (let i = 0; i < ring.n; i++) {
+    const theta = (i / ring.n) * Math.PI * 2 + (Math.random()-0.5)*0.5;
+    const phi = lerp(ring.phiRange[0], ring.phiRange[1], Math.random()) * (Math.PI/2);
+    streams.push({
+      theta, phi,
+      len: BASE_LEN * ring.lenMul * (0.70 + Math.random()*0.90),
+      wid: BASE_WID * ring.widMul * (0.65 + Math.random()*0.90),
+      speed: 0.008 + Math.random()*0.006,
+      phase: Math.random()*Math.PI*2,
+      freq:  0.6 + Math.random()*0.6,
+      curl:  (Math.random()-0.5)*0.25,
+      colIdx: Math.floor(Math.random() * 6),
+      hoverT: 0,
+    });
+  }
+});
+
+// Each stream renders as a series of particles along its spine
+const PARTS_PER_STREAM = 28;
+
+// Camera tilt
+const PITCH = 0.32;
+const CP = Math.cos(PITCH), SP = Math.sin(PITCH);
+
+function project(x: number, y: number, z: number) {
+  const yc = y*CP + z*SP;
+  const zc = -y*SP + z*CP;
+  const fov = W * 3.5;
+  const s = fov / (fov + zc);
+  return { sx: cx + x*s, sy: cy - yc*s, depth: zc, s };
+}
+
+let tick = 0;
+let rotAngle = 0;
+
+// Build a smooth catmull-rom bezier path through screen points
+function buildPath(pts: {sx:number;sy:number}[], offX=0, offY=0) {
+  if (pts.length < 2) return;
+  ctx.moveTo(pts[0].sx+offX, pts[0].sy+offY);
+  for (let i = 0; i < pts.length-1; i++) {
+    const p0=pts[Math.max(i-1,0)], p1=pts[i], p2=pts[i+1], p3=pts[Math.min(i+2,pts.length-1)];
+    ctx.bezierCurveTo(
+      p1.sx+(p2.sx-p0.sx)/6+offX, p1.sy+(p2.sy-p0.sy)/6+offY,
+      p2.sx-(p3.sx-p1.sx)/6+offX, p2.sy-(p3.sy-p1.sy)/6+offY,
+      p2.sx+offX, p2.sy+offY
+    );
+  }
+}
+
+function drawTentacle(s: Stream) {
+  const SEGS = 22;
+  const sway1 = Math.sin(tick*s.freq + s.phase) * s.len * 0.26;
+  const sway2 = Math.sin(tick*s.freq*0.65 + s.phase + 1.2) * s.len * 0.14;
+  const curl  = s.curl * s.len * (0.8 + Math.sin(tick*0.18 + s.phase)*0.4);
+  const swayY = Math.sin(tick*s.freq*0.75 + s.phase + 0.8) * s.len * 0.20;
+
+  const sinPhi=Math.sin(s.phi), cosPhi=Math.cos(s.phi);
+  const th = s.theta + rotAngle;
+  const ox=sinPhi*Math.cos(th), oy=cosPhi, oz=sinPhi*Math.sin(th);
+  const px=-Math.sin(th), pz=Math.cos(th);
+  const rx=Math.cos(th)*cosPhi, rz=Math.sin(th)*cosPhi;
+
+  const pts: {sx:number;sy:number;lw:number}[] = [];
+  for (let i=0; i<=SEGS; i++) {
+    const f=i/SEGS;
+    const env=f*Math.sin(f*Math.PI*1.1);
+    const sw1=sway1*env, sw2=sway2*env, syv=swayY*env, cu=curl*f*f;
+    const dist=W*0.02+s.len*f;
+    const p=project(ox*dist+px*(sw1+cu)+rx*sw2, oy*dist+syv, oz*dist+pz*(sw1+cu)*0.3+rz*sw2*0.3);
+    pts.push({ sx:p.sx, sy:p.sy, lw:s.wid*p.s });
+  }
+
+  const mi=Math.floor(SEGS/2);
+  const a=pts[mi-1], b=pts[mi+1];
+  const tx=b.sx-a.sx, ty=b.sy-a.sy, tl=Math.sqrt(tx*tx+ty*ty)||1;
+  let nx=-ty/tl, ny=tx/tl;
+  if (nx*(-0.6)+ny*(-0.5)<0) { nx=-nx; ny=-ny; }
+
+  // Check if mouse is near any point on this tentacle
+  const HOVER_DIST = pts[mi].lw * 2.5;
+  let near = false;
+  for (const p of pts) {
+    const dx=mouseX-p.sx, dy=mouseY-p.sy;
+    if (dx*dx+dy*dy < HOVER_DIST*HOVER_DIST) { near=true; break; }
+  }
+  s.hoverT = lerp(s.hoverT, near ? 1 : 0, 0.08);
+  const ht = s.hoverT;
+
+  ctx.lineCap='round'; ctx.lineJoin='round';
+
+  const layers = [
+    { wm:1.00, bm:0.22, al:0.90, ox:0,  oy_:0  },
+    { wm:0.84, bm:0.65, al:0.95, ox:0,  oy_:0  },
+    { wm:0.45, bm:1.65, al:0.70, ox:nx, oy_:ny },
+    { wm:0.15, bm:3.50, al:0.50, ox:nx, oy_:ny },
+  ];
+
+  for (const L of layers) {
+    for (let i=0; i<SEGS; i++) {
+      const lw = pts[i].lw * L.wm;
+      if (lw<0.5) continue;
+      const oox = L.ox * pts[i].lw * 0.32;
+      const ooy = L.oy_ * pts[i].lw * 0.32;
+      ctx.beginPath();
+      ctx.moveTo(pts[i].sx+oox, pts[i].sy+ooy);
+      const mx=(pts[i].sx+pts[i+1].sx)/2+oox, my=(pts[i].sy+pts[i+1].sy)/2+ooy;
+      ctx.quadraticCurveTo(pts[i].sx+oox, pts[i].sy+ooy, mx, my);
+      ctx.lineWidth=lw;
+      if (L.bm>2) {
+        ctx.strokeStyle=`rgba(255,255,255,${(L.al*0.85).toFixed(2)})`;
+      } else {
+        ctx.strokeStyle=getColor(s.colIdx, L.bm, L.al, ht);
+      }
+      ctx.stroke();
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Sort back-to-front
+  const sorted = [...streams].sort((a,b)=>{
+    const da=-(Math.cos(a.phi)*CP+Math.sin(a.phi)*Math.sin(a.theta)*SP);
+    const db=-(Math.cos(b.phi)*CP+Math.sin(b.phi)*Math.sin(b.theta)*SP);
+    return da-db;
+  });
+
+  sorted.forEach(drawTentacle);
+
+
+  tick += 0.007;
+  rotAngle += 0.0004;
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+// Spray-brush per-character color based on mouse proximity
+const heading = document.querySelector('.hero-heading') as HTMLElement;
+if (heading) {
+  // Split into char spans
+  const nodes = Array.from(heading.childNodes);
+  for (const node of nodes) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const frag = document.createDocumentFragment();
+      for (const ch of node.textContent || '') {
+        const s = document.createElement('span');
+        s.className = 'char';
+        s.textContent = ch;
+        frag.appendChild(s);
+      }
+      node.replaceWith(frag);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const el = node as HTMLElement;
+      const text = el.textContent || '';
+      el.textContent = '';
+      for (const ch of text) {
+        const s = document.createElement('span');
+        s.className = 'char';
+        s.textContent = ch;
+        el.appendChild(s);
+      }
+    }
+  }
+
+  const chars = Array.from(heading.querySelectorAll('.char')) as HTMLElement[];
+  const painted = new Array(chars.length).fill(0);
+  const isHov = new Array(chars.length).fill(false);
+  let rafId = 0;
+  let rects: DOMRect[] = [];
+
+  function buildRects() {
+    rects = chars.map(ch => ch.getBoundingClientRect());
+  }
+
+  function charColor(i: number) {
+    if (!rects.length) return [176, 106, 247];
+    const hRect = heading.getBoundingClientRect();
+    const cx = rects[i].left + rects[i].width / 2;
+    const t = Math.max(0, Math.min(1, (cx - hRect.left) / hRect.width));
+    const r = Math.round(176 + (224 - 176) * t);
+    const g = Math.round(106 + (90  - 106) * t);
+    const b = Math.round(247 + (176 - 247) * t);
+    return [r, g, b];
+  }
+
+  function animateChars() {
+    let needsRaf = false;
+    chars.forEach((ch, i) => {
+      const target = isHov[i] ? 1 : 0;
+      painted[i] += (target - painted[i]) * 0.1;
+      if (Math.abs(painted[i] - target) > 0.005) needsRaf = true;
+      const p = painted[i];
+      const [cr, cg, cb] = charColor(i);
+      ch.style.color = `rgb(${Math.round(255+(cr-255)*p)},${Math.round(255+(cg-255)*p)},${Math.round(255+(cb-255)*p)})`;
+    });
+    if (needsRaf) rafId = requestAnimationFrame(animateChars);
+  }
+
+  heading.addEventListener('mousemove', (e: MouseEvent) => {
+    if (!rects.length) buildRects();
+    const mx = e.clientX, my = e.clientY;
+    let changed = false;
+    rects.forEach((r, i) => {
+      const over = mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom;
+      if (over !== isHov[i]) { isHov[i] = over; changed = true; }
+    });
+    if (changed) { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(animateChars); }
+  });
+
+  heading.addEventListener('mouseleave', () => {
+    isHov.fill(false);
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(animateChars);
+  });
+
+  window.addEventListener('resize', () => { rects = []; });
+}
+</script>
+

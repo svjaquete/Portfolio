@@ -1,0 +1,104 @@
+---
+title: "AI Audit Assistant"
+summary: "An AI-powered feature that automates the manual tasks auditors spend half their time on — scanning documents, validating information, and surfacing answers with source citations."
+tools: ["Product Design", "UX Research", "End-to-end", "B2B", "Compliance"]
+coverImage: "/images/desktopaiass.png"
+heroVideo: "/videos/ai-auditor-demo.mov"
+cardImages:
+  - "/images/desktopaiass.png"
+order: 2
+---
+
+import Problem from '../../components/cs/Problem.astro';
+import ProcessSection from '../../components/cs/ProcessSection.astro';
+import SectionTitle from '../../components/cs/SectionTitle.astro';
+import SubHeading from '../../components/cs/SubHeading.astro';
+import DescRow from '../../components/cs/DescRow.astro';
+import ImageGrid from '../../components/cs/ImageGrid.astro';
+import FinalResult from '../../components/cs/FinalResult.astro';
+import Impact from '../../components/cs/Impact.astro';
+import UserFlowAI from '../../components/cs/UserFlowAI.astro';
+
+
+<Problem
+  label="The problem?"
+  heading="Half of an auditor's working hours are spent on manual tasks that can be automated."
+>
+  Auditors spend their time on documenting, scanning, cross-referencing, and answering repetitive questions, this type of work adds no unique value and delays the audit itself.
+</Problem>
+
+<ProcessSection
+  label="How we face the problem?"
+  title="Double Diamond Process"
+  image="/images/Artboard+9.png"
+/>
+
+<SectionTitle title="Discover" />
+
+<DescRow label="Contextual Inquiry">
+  More than **10 interviews** across auditor experience levels to understand the daily reality of manual audit work and where time was being lost.
+</DescRow>
+
+<DescRow label="Benchmarketing">
+  Study from 8 different audit and compliance tools to identify patterns and gaps in the market.
+</DescRow>
+
+<SectionTitle title="Define" />
+
+<DescRow label="User needs">
+  Synthesized findings into a prioritized list of needs, ranked by frequency and impact across auditor levels.
+</DescRow>
+
+<DescRow label="Scope">
+  Aligned with the PM and Engineering Manager on what to build in the first version — focusing on the highest-impact automatable tasks.
+</DescRow>
+
+<DescRow label="User flow">
+  Mapped the end-to-end workflow for the AI-assisted audit process before touching UI design.
+</DescRow>
+
+<UserFlowAI />
+
+<SectionTitle title="Develop" />
+
+<SubHeading title="Low-fidelity wireframes" />
+
+<ImageGrid
+  cols={3}
+  images={[
+    "/images/Screenshot+2026-05-08+at+02.36.45.png",
+    "/images/Screenshot+2026-05-08+at+02.37.15.png",
+    "/images/Screenshot+2026-05-08+at+02.37.28.png"
+  ]}
+  alt="Wireframes"
+/>
+
+<DescRow label="User Testing">
+  Qualitative sessions on prototypes to catch friction before engineering began. Validated the three-step interaction model with real auditors.
+</DescRow>
+
+<Impact stats={[
+  {
+    value: "45%",
+    label: "Less Audit Cycle Time",
+    description: "Reduction in audit cycle time through AI-powered document scanning and automated question answering."
+  },
+  {
+    value: "100+",
+    label: "Audits per Month",
+    description: "Audits processed monthly with the same team, unlocking scale without adding manual effort."
+  }
+]} cols={2} />
+
+<FinalResult
+  title="AI Auditor"
+  subtitle="Final result"
+  description="A new way of compliance, reducing audit time and manual work for auditors."
+  phoneImage="/images/desktopaiass.png"
+  desktopImage="/images/controls 2.png"
+  desktopImageBack="/images/controls1.png"
+>
+  - Client uploads documents to the platform.
+  - AI scans, validates, and answers audit questions with source citations.
+  - Auditor reviews, adjusts if needed, and approves.
+</FinalResult>

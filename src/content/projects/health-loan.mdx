@@ -1,0 +1,173 @@
+---
+title: "Health-Loan Platform"
+subtitle: "Apply for a health loan fast & easy"
+summary: "A digital platform connecting Costa Ricans with multiple banks and healthcare centers — making private healthcare accessible through a fast, fully digital loan application process."
+role: "Product Design"
+tools: ["UX Research", "Prototyping", "Fintech", "B2C", "SaaS"]
+coverImage: "/images/Frame+138.png"
+heroVideo: "/videos/Health Loan SaaS SV-Picsart-BackgroundRemover.mov"
+heroVideoWidth: "320px"
+link: "https://www.sofiavjaquete.com/work/healthloan"
+order: 1
+---
+
+import Feature from '../../components/cs/Feature.astro';
+import Problem from '../../components/cs/Problem.astro';
+import ProcessSection from '../../components/cs/ProcessSection.astro';
+import SectionTitle from '../../components/cs/SectionTitle.astro';
+import SubHeading from '../../components/cs/SubHeading.astro';
+import DescRow from '../../components/cs/DescRow.astro';
+import ImageGrid from '../../components/cs/ImageGrid.astro';
+import FinalResult from '../../components/cs/FinalResult.astro';
+import Impact from '../../components/cs/Impact.astro';
+
+<Feature
+  heading="The health loan branch connects medical centers with multiple banks"
+  images={[
+    "/images/Frame+138.png",
+    "/images/Frame+136.png",
+    "/images/Frame+137.png",
+    "/images/Frame+135.png"
+  ]}
+>
+  By answering a few simple questions, you'll see loan options that match your situation.
+
+  You can then apply to multiple loans at the same time, all in one place.
+</Feature>
+
+<Problem
+  label="The problem?"
+  heading="Growing demand for private healthcare due to long public system wait times."
+>
+  Long wait times in Costa Rica's public healthcare system have pushed more people to seek private care. For many, however, the high cost of private services makes access to timely treatment difficult, creating stress, uncertainty, and delayed care.
+</Problem>
+
+<ProcessSection
+  label="How we face the problem?"
+  title="Double Diamond Process"
+  image="/images/Artboard+9.png"
+/>
+
+<SectionTitle title="Discover" />
+
+<DescRow label="Qualitative Research">
+  More than **20 interviews** between users, banks and health centers.
+</DescRow>
+
+<DescRow label="Benchmarketing">
+  Study from 8 different credit processes, aiming to understand the ease, intuitiveness, and efficiency.
+</DescRow>
+
+<SectionTitle title="Define" />
+
+<DescRow label="Empathy map">
+  A synthesis of user interviews that captures what users say, think, feel, and do in relation to the identified problem.
+</DescRow>
+
+<DescRow label="User personas">
+  Three different representations of the target user based on their knowledge in loans and finances with different contexts, motivations and needs.
+</DescRow>
+
+<ImageGrid
+  cols={1}
+  images={["/images/Frame+9.png"]}
+  alt="User personas"
+/>
+
+<div style="height: 3rem" />
+
+<DescRow label="Needs synthesis">
+  First, we identify the primary user type. Then, we gather and prioritize the needs of all user types to ensure the digital product addresses the most critical issues.
+</DescRow>
+
+<ImageGrid
+  cols={2}
+  images={[
+    "/images/Tabloid+-+33.png",
+    "/images/Tabloid+-+148.png"
+  ]}
+  alt="Needs synthesis"
+/>
+
+<div style="height: 3rem" />
+
+<DescRow label="Architecture">
+  The final structure was defined through card sorting to evaluate nomenclature and by assessing navigation paths.
+
+  The architecture prioritizes clear information hierarchy and intuitive flows, enabling seamless navigation and interaction within the application.
+</DescRow>
+
+<div style="height: 3rem" />
+
+<ImageGrid
+  cols={1}
+  light
+  images={["/images/Tabloid+-+144.png"]}
+  alt="Information Architecture"
+/>
+
+<SectionTitle title="Develop" />
+
+<SubHeading title="Wire-frames" />
+
+<ImageGrid
+  cols={1}
+  images={["/images/Frame+6.png"]}
+  alt="Wireframes"
+/>
+
+<DescRow label="User Testing">
+  Qualitative testing, using a prototype and some tasks to find opportunities for improvement in relation with the structure, nomenclature and hierarchy.
+</DescRow>
+
+<SectionTitle title="Deliver" />
+
+<SubHeading title="Architecture Beta" />
+
+<ImageGrid
+  cols={1}
+  light
+  images={["/images/Tabloid+-+144.png"]}
+  alt="Architecture Beta"
+/>
+
+<SubHeading title="Mood Board" />
+
+<ImageGrid
+  cols={1}
+  images={["/images/Tabloid+-+77.png"]}
+  alt="Mood Board"
+/>
+
+<Impact stats={[
+  {
+    value: "+25%",
+    label: "Active Customer Base",
+    description: "Growth in active customers after launching the platform, driven by a faster and more accessible loan application experience."
+  },
+  {
+    value: "-30%",
+    label: "Loan Processing Time",
+    description: "Reduction in loan processing time through a streamlined digital flow connecting banks and medical centers in one place."
+  },
+  {
+    value: "+30%",
+    label: "UI Deployment Efficiency",
+    description: "Gained by building a scalable design system from scratch, enabling faster and more consistent product iterations."
+  }
+]} />
+
+<FinalResult
+  title="Health-Loan"
+  subtitle="Final result"
+  description="Our SaaS product connects medical centers with multiple financial institutions, enabling fast and fully digital health loan applications."
+  phoneImage="/images/Frame+132.png"
+  phoneWidth="340px"
+  inlineDesktop={true}
+  desktopImage="/images/Frame+149.png"
+>
+  - Enter your financial details to view health loan options from multiple banks.
+  - Select the loans you want to apply for.
+  - Submit applications automatically through a single digital process.
+  - Receive and compare final offers from financial institutions.
+</FinalResult>

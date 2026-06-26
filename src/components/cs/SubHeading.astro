@@ -1,0 +1,17 @@
+---
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<h3 class="sub-heading reveal">{title}</h3>
+<style>
+  .sub-heading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: var(--text);
+    padding: 2.5rem 0 0.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: block;
+  }
+</style>

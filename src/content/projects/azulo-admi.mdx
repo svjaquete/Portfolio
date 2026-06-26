@@ -1,0 +1,131 @@
+---
+title: "Health Loan Management"
+subtitle: "CRM · Service Platform"
+summary: "A platform for financial institutions and health centers to manage the full health loan lifecycle — from customer tracking to payment distribution."
+tools: ["Service Design", "Product Design", "UX Research", "B2B"]
+coverImage: "/images/Frame+127.png"
+cardImages:
+  - "/images/Frame+151.png"
+order: 3
+---
+
+import Feature from '../../components/cs/Feature.astro';
+import Problem from '../../components/cs/Problem.astro';
+import SectionTitle from '../../components/cs/SectionTitle.astro';
+import SubHeading from '../../components/cs/SubHeading.astro';
+import DescRow from '../../components/cs/DescRow.astro';
+import ImageGrid from '../../components/cs/ImageGrid.astro';
+import FinalResult from '../../components/cs/FinalResult.astro';
+import FloatingDeck from '../../components/cs/FloatingDeck.astro';
+
+<FloatingDeck
+  laptop="/images/Frame+143.png"
+  screens={[
+    "/images/Frame+139.png",
+    "/images/Frame+142.png",
+    "/images/Frame+140.png"
+  ]}
+/>
+
+<Problem
+  label="The problem?"
+  heading="Loan follow-up operations were scattered across teams with no unified system."
+>
+  After a health loan was approved, managing it — tracking customers, updating status, handling documents, calculating payments — was done manually across disconnected systems, causing delays and errors for banks, medical centers, and doctors alike.
+</Problem>
+
+<SectionTitle title="Research & Strategy" />
+
+<DescRow label="Stakeholder Interviews">
+  Qualitative sessions with financial institution staff and health center administrators to map pain points and understand the current operational reality.
+</DescRow>
+
+<DescRow label="Alignment">
+  Workshop to align all teams — banks, medical centers, doctors — on shared priorities and goals before design began.
+</DescRow>
+
+<DescRow label="Blueprint">
+  A detailed service blueprint mapping every touchpoint and interaction across all stakeholders in the service journey.
+</DescRow>
+
+<ImageGrid
+  cols={1}
+  images={["/images/Frame+128+(6).png"]}
+  caption="Service Blueprint"
+/>
+
+<SectionTitle title="Define" />
+
+<DescRow label="Architecture">
+  Organized the information structure to support three distinct user roles: bank operators, medical center staff, and doctors — each with different needs and permissions.
+</DescRow>
+
+<img src="/images/Frame+129+(2).png" alt="Architecture" style="width:100%;display:block;margin:1.5rem 0;border-radius:8px;filter:invert(1);" />
+
+<SectionTitle title="Develop" />
+
+<DescRow label="Prototype">
+  Utilizing high-fidelity wireframes generated through the components library in the company's design system, UX tests and reviews were able to be conducted.
+</DescRow>
+
+<ImageGrid
+  cols={3}
+  images={[
+    "/images/Inicio+(1).png",
+    "/images/formularioCotizacion.png",
+    "/images/formularioFacturacion.png"
+  ]}
+  alt="Prototype"
+/>
+
+<DescRow label="User Testing">
+  Several remote tests were conducted with stakeholder workers, using the prototype previously created and asking the user to do several tasks. Valuable feedback was gathered concerning specific design elements, interactions, and the overall user flow, prompting modifications to ensure a seamless and user-friendly experience.
+</DescRow>
+
+<FinalResult
+  title="Health Loan Management Platform"
+  subtitle="Final result"
+  description="A unified platform for managing the full health loan lifecycle — from customer tracking to automated payment distribution across medical centers and doctors."
+  phoneImage="/images/Frame+151.png"
+>
+  - Customer profile tracking and loan lifecycle management.
+  - Document upload and management per loan case.
+  - Automated payment distribution calculations across medical centers and doctors.
+  - Role-based access for banks, health centers, and medical staff.
+</FinalResult>
+
+<div id="pop-composition" style="position:relative;width:100%;height:700px;margin:3rem 0;">
+  <img src="/images/Frame+159.png" alt="Detail" style="position:absolute;width:32%;top:0;left:50%;transform:translateX(-50%);z-index:1;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,0.3);" />
+  <img class="pop-img" src="/images/Frame+161.png" alt="Estatus" style="position:absolute;width:40%;top:calc(14% + 18px);left:0;z-index:2;border-radius:10px;" />
+  <img class="pop-img" src="/images/Frame+160.png" alt="Solicitud" style="position:absolute;width:42%;top:-8%;right:calc(8% - 55px);z-index:2;border-radius:10px;" />
+  <img class="pop-img" src="/images/Frame+162.png" alt="Detail 2" style="position:absolute;width:42%;top:calc(50% - 90px);right:calc(8% - 55px);z-index:2;border-radius:10px;" />
+</div>
+<div style="height:6rem;"></div>
+
+<style>{`
+  .pop-img {
+    opacity: 0;
+    transform: scale(0.94) !important;
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .pop-img.pop-visible {
+    opacity: 1;
+    transform: scale(1) !important;
+  }
+`}</style>
+
+<script>{`
+  const composition = document.getElementById('pop-composition');
+  const popImgs = composition.querySelectorAll('.pop-img');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        popImgs.forEach((img, i) => {
+          setTimeout(() => img.classList.add('pop-visible'), i * 200);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5, rootMargin: '0px 0px -150px 0px' });
+  observer.observe(composition);
+`}</script>

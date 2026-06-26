@@ -1,0 +1,47 @@
+---
+interface Props {
+  label?: string;
+  heading: string;
+}
+const { label = 'The problem?', heading } = Astro.props;
+---
+<div class="problem reveal">
+  <div class="problem-inner">
+    <p class="problem-label">{label}</p>
+    <h2>{heading}</h2>
+    <div class="problem-body"><slot /></div>
+  </div>
+</div>
+<style>
+  .problem {
+    padding: 6rem 2.5rem;
+    text-align: center;
+    background: var(--bg);
+  }
+  .problem-inner { max-width: 900px; margin: 0 auto; }
+  .problem-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+  .problem-body {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 680px) { .problem { padding: 4rem 1.5rem; } }
+</style>

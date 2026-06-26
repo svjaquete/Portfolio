@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(p => ({
+    params: { slug: p.id },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, subtitle, summary, role, tools, coverImage, heroVideo, heroVideoWidth, link } = project.data;
+
+const allProjects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const currentIndex = allProjects.findIndex(p => p.id === project.id);
+const next = allProjects[(currentIndex + 1) % allProjects.length];
+---
+<BaseLayout title={`${title} — Sofía Jaquete`} description={summary}>
+  <article data-project={project.id}>
+
+    <!-- Hero -->
+    <div class="cs-hero">
+      <a href="/#work" class="cs-back">← Work</a>
+
+      <div class="cs-hero-titles">
+        <h1>{title}</h1>
+        {subtitle && <p class="cs-subtitle">{subtitle}</p>}
+      </div>
+
+      <div class="cs-meta-row">
+        {role && <span>{role}</span>}
+        {tools.map((t, i) => <><span class="cs-dot">{role || i > 0 ? '·' : ''}</span><span>{t}</span></>)}
+        {link && <><span class="cs-dot">·</span><a href={link} target="_blank" rel="noopener" class="cs-live">Live site ↗</a></>}
+      </div>
+
+      {heroVideo ? (
+        <div class="cs-hero-image" style={heroVideoWidth ? `width: ${heroVideoWidth}` : undefined}>
+          <video src={heroVideo} autoplay muted loop playsinline />
+        </div>
+      ) : coverImage && (
+        <div class="cs-hero-image">
+          <img src={coverImage} alt={title} />
+        </div>
+      )}
+    </div>
+
+    <!-- MDX content — components handle all layout -->
+    <div class="cs-content">
+      <Content />
+    </div>
+
+    <!-- Next project -->
+    <div class="cs-next">
+      <p class="cs-next-label">Next project</p>
+      <a href={`/projects/${next.id}`} class="cs-next-link">
+        <span class="cs-next-title">{next.data.title}</span>
+        <span class="cs-next-arrow">→</span>
+      </a>
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .cs-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 7rem 2.5rem 0;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .cs-back {
+    position: absolute;
+    top: 1.5rem;
+    left: 2.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .cs-back:hover { color: var(--text); }
+
+  .cs-hero-titles { margin-bottom: 1.75rem; }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    color: var(--text);
+    font-family: var(--sans);
+  }
+  .cs-subtitle {
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.4;
+    color: var(--text);
+    opacity: 0.55;
+    margin-top: 0.5rem;
+  }
+
+  .cs-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 4rem;
+  }
+  .cs-dot { color: var(--border-light); }
+  .cs-live { color: var(--accent); transition: color 0.2s; }
+  .cs-live:hover { color: var(--accent-hover); }
+
+  .cs-hero-image {
+    width: min(1100px, 95%);
+    margin: 0 auto;
+    position: relative;
+  }
+  .cs-hero-image img,
+  .cs-hero-image video {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 -8px 60px rgba(124,106,247,0.15), 0 40px 80px rgba(0,0,0,0.6);
+  }
+
+  [data-project="alina"] :global(.img-wrap) {
+    transform: none !important;
+  }
+  [data-project="alina"] :global(.img-wrap.visible) {
+    transform: none !important;
+  }
+
+  [data-project="alina"] .cs-hero-image {
+    padding: 8rem 6rem;
+  }
+  [data-project="alina"] .cs-hero-image img {
+    box-shadow: none;
+    filter: drop-shadow(0 20px 55px rgba(255,255,255,0.17));
+  }
+
+  /* Content — MDX components handle internal layout */
+  .cs-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+    background: var(--bg);
+  }
+  .cs-content :global(> *) {
+    margin-bottom: 40px;
+  }
+  .cs-content :global(> *:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Next project */
+  .cs-next {
+    padding: 4rem 2.5rem;
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cs-next-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .cs-next-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .cs-next-title {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .cs-next-link:hover .cs-next-title { color: var(--accent); }
+  .cs-next-arrow {
+    font-size: 2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s, color 0.2s;
+    flex-shrink: 0;
+  }
+  .cs-next-link:hover .cs-next-arrow { transform: translateX(8px); color: var(--accent); }
+
+  @media (max-width: 680px) {
+    .cs-hero { padding: 6rem 1.5rem 0; min-height: auto; }
+    .cs-next { padding: 2.5rem 1.5rem; }
+  }
+</style>
