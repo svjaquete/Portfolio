@@ -82,5 +82,8 @@ const { images, cols = 1, alt = '', caption, light = false } = Astro.props;
 
   @media (max-width: 680px) {
     .cols-3, .cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .cols-2 { flex-direction: column; }
+    .cols-2 .img-item img { height: auto !important; width: 100% !important; }
+    .img-grid-wrap { padding: 1.5rem; }
   }
 </style>

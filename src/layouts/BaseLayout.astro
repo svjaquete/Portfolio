@@ -18,7 +18,7 @@ const { title, description = 'Sofía Jaquete — Product & Service Designer' } =
 </head>
 <body>
   <div class="intro-overlay" id="intro-overlay">
-    <span class="intro-logo">SJ<span class="intro-dot">.</span></span>
+    <canvas id="intro-canvas"></canvas>
   </div>
 
   <div class="cursor" id="cursor"></div>
@@ -66,17 +66,130 @@ const { title, description = 'Sofía Jaquete — Product & Service Designer' } =
 </html>
 
 <script>
-  // Intro overlay
+  // Intro anemone loader
   (function() {
-    var overlay = document.getElementById('intro-overlay');
-    if (!overlay) return;
+    const overlay = document.getElementById('intro-overlay');
+    const canvas = document.getElementById('intro-canvas') as HTMLCanvasElement;
+    if (!overlay || !canvas) return;
+
     if (sessionStorage.getItem('intro-seen')) {
       overlay.style.display = 'none';
-    } else {
-      sessionStorage.setItem('intro-seen', '1');
-      setTimeout(function() { overlay.classList.add('slide-up'); }, 900);
-      setTimeout(function() { overlay.remove(); }, 1700);
+      return;
     }
+    sessionStorage.setItem('intro-seen', '1');
+
+    const DPR = Math.min(devicePixelRatio, 2);
+    const SIZE = 320 * DPR;
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+    const ctx = canvas.getContext('2d')!;
+    const cx = SIZE * 0.5, cy = SIZE * 0.62;
+
+    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+
+    const rings = [
+      { n: 5,  phiRange:[0.05,0.18], lenMul:0.50 },
+      { n: 9,  phiRange:[0.18,0.35], lenMul:0.75 },
+      { n: 13, phiRange:[0.35,0.52], lenMul:0.95 },
+      { n: 14, phiRange:[0.52,0.68], lenMul:1.08 },
+      { n: 11, phiRange:[0.68,0.85], lenMul:1.05 },
+      { n: 8,  phiRange:[1.00,1.12], lenMul:1.00 },
+      { n: 6,  phiRange:[1.12,1.25], lenMul:0.85 },
+      { n: 4,  phiRange:[1.25,1.38], lenMul:0.65 },
+    ];
+
+    const BASE_LEN = SIZE * 0.28;
+    const PITCH = 0.32;
+    const CP = Math.cos(PITCH), SP = Math.sin(PITCH);
+
+    interface Stream { theta: number; phi: number; len: number; speed: number; phase: number; freq: number; curl: number; progress: number; }
+    const streams: Stream[] = [];
+
+    rings.forEach(ring => {
+      for (let i = 0; i < ring.n; i++) {
+        const theta = (i / ring.n) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+        const phi = lerp(ring.phiRange[0], ring.phiRange[1], Math.random()) * (Math.PI / 2);
+        streams.push({
+          theta, phi,
+          len: BASE_LEN * ring.lenMul * (0.70 + Math.random() * 0.90),
+          speed: 0.008 + Math.random() * 0.006,
+          phase: Math.random() * Math.PI * 2,
+          freq: 0.6 + Math.random() * 0.6,
+          curl: (Math.random() - 0.5) * 0.25,
+          progress: 0,
+        });
+      }
+    });
+
+    function project(x: number, y: number, z: number) {
+      const yc = y * CP + z * SP;
+      const zc = -y * SP + z * CP;
+      const fov = SIZE * 3.5;
+      const s = fov / (fov + zc);
+      return { sx: cx + x * s, sy: cy - yc * s };
+    }
+
+    let tick = 0;
+    let rotAngle = 0;
+    let allDone = false;
+
+    function drawStream(s: Stream) {
+      const SEGS = 12;
+      const sway1 = Math.sin(tick * s.freq + s.phase) * s.len * 0.26;
+      const sway2 = Math.sin(tick * s.freq * 0.65 + s.phase + 1.2) * s.len * 0.14;
+      const curl = s.curl * s.len * (0.8 + Math.sin(tick * 0.18 + s.phase) * 0.4);
+      const swayY = Math.sin(tick * s.freq * 0.75 + s.phase + 0.8) * s.len * 0.20;
+
+      const sinPhi = Math.sin(s.phi), cosPhi = Math.cos(s.phi);
+      const th = s.theta + rotAngle;
+      const ox = sinPhi * Math.cos(th), oy = cosPhi, oz = sinPhi * Math.sin(th);
+      const px = -Math.sin(th), pz = Math.cos(th);
+      const rx = Math.cos(th) * cosPhi, rz = Math.sin(th) * cosPhi;
+
+      if (s.progress > 0 && s.progress < 1) s.progress = Math.min(1, s.progress + 0.015);
+
+      const totalSegs = Math.floor(SEGS * s.progress);
+      if (totalSegs < 1) return;
+
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(20, 230, 210, ${0.4 + s.progress * 0.5})`;
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+
+      for (let i = 0; i <= totalSegs; i++) {
+        const f = i / SEGS;
+        const env = f * Math.sin(f * Math.PI * 1.1);
+        const sw1 = sway1 * env, sw2 = sway2 * env, syv = swayY * env, cu = curl * f * f;
+        const dist = SIZE * 0.02 + s.len * f;
+        const p = project(ox * dist + px * (sw1 + cu) + rx * sw2, oy * dist + syv, oz * dist + pz * (sw1 + cu) * 0.3 + rz * sw2 * 0.3);
+        if (i === 0) ctx.moveTo(p.sx, p.sy);
+        else ctx.lineTo(p.sx, p.sy);
+      }
+      ctx.stroke();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      streams.forEach(s => drawStream(s));
+      tick += 0.007;
+      rotAngle += 0.0004;
+      allDone = streams.every(s => s.progress >= 1);
+      if (!allDone) {
+        requestAnimationFrame(animate);
+      } else {
+        setTimeout(() => {
+          overlay.classList.add('fade-out');
+          setTimeout(() => overlay.remove(), 900);
+        }, 300);
+      }
+    }
+
+    // Stagger stream start
+    streams.forEach((s, i) => {
+      setTimeout(() => { s.progress = 0.001; }, i * 18);
+    });
+
+    animate();
   })();
 
   // Custom cursor
@@ -143,18 +256,10 @@ const { title, description = 'Sofía Jaquete — Product & Service Designer' } =
     justify-content: center;
     transition: transform 0.75s cubic-bezier(.76,0,.24,1);
   }
-  .intro-overlay.slide-up { transform: translateY(-100%); }
-  .intro-logo {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--text);
-    opacity: 0;
-    animation: intro-fade 0.6s ease forwards 0.2s;
-  }
-  .intro-dot { color: var(--accent); }
-  @keyframes intro-fade {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .intro-overlay.fade-out { opacity: 0; transition: opacity 0.8s ease; }
+  #intro-canvas {
+    width: 320px;
+    height: 320px;
   }
 
   .nav {

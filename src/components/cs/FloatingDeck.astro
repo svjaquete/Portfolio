@@ -121,11 +121,17 @@ const { laptop, screens, caption } = Astro.props;
   }
 
   @media (max-width: 680px) {
-    .deck { height: 420px; }
-    .deck-laptop { width: 65%; }
-    .deck-screen-0 { width: 52%; left: 12%; }
-    .deck-screen-1 { width: 54%; }
-    .deck-screen-2 { width: 46%; }
+    .deck-wrap { padding: 1rem 1.5rem 3rem; }
+    .deck { height: auto; display: flex; flex-direction: column; gap: 1rem; }
+    .deck-item {
+      position: relative !important;
+      width: 100% !important;
+      top: auto !important; left: auto !important; right: auto !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .deck-text { margin-bottom: 2rem; }
   }
 </style>
 

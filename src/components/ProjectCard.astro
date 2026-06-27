@@ -266,9 +266,11 @@ const imgs = cardImages?.length ? cardImages : coverImage ? [coverImage] : [];
   @media (max-width: 768px) {
     .card {
       grid-template-columns: 1fr;
-      padding: 2rem;
-      gap: 2rem;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
     }
-    .card-images { height: 280px; }
+    .card-images { height: 260px; }
+    .card--featured .card-images { height: 260px; }
+    .card-title { font-size: clamp(1.5rem, 6vw, 2rem); }
   }
 </style>

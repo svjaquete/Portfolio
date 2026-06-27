@@ -169,7 +169,10 @@ const { heading, images, noRotate = false, stacked = false } = Astro.props;
   @media (max-width: 768px) {
     .feature-inner { grid-template-columns: 1fr; }
     .feature { padding: 3rem 1.5rem; }
-    .feature-images { min-height: 200px; }
+    .feature-images { height: 360px; min-height: unset; }
+    .feature-images .img-0 { width: 85%; top: -20px; left: 0; }
+    .feature-images .img-2 { width: 70%; top: 120px; left: 20px; }
+    .feature-images .img-3 { width: 65%; top: 200px; left: 30px; }
   }
 </style>
 
